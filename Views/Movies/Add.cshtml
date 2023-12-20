@@ -1,0 +1,43 @@
+﻿@model DVDRental2.Models.AddMovieViewModel
+
+@{
+    var genres = new List<string> { "Action", "Comedy", "Drama", "Fantasy", "Horror", "Sci-Fi", "Thriller" };
+}
+
+<h1 class="text-center">Add Movie </h1>
+
+<form method="post" action="Add">
+    <div class="mb-3">
+        <label for="title" class="form-label">Movie Title</label>
+        <input type="text" class="form-control" id="title" asp-for="Title" name="Title" required>
+    </div>
+    <div class="mb-3">
+        <label for="director" class="form-label">Director's Name</label>
+        <input type="text" class="form-control" id="director" asp-for="Director" name="Director" required>
+    </div>
+    <div class="mb-3">
+        <label for="star" class="form-label">Lead Actor/Actress</label>
+        <input type="text" class="form-control" id="star" asp-for="Star" name="Star" required>
+    </div>
+ 
+    <div class="mb-3">
+        <label for="genre" class="form-label">Genre</label>
+        <select class="form-control" id="genre" asp-for="Genre" name="Genre" required>
+            <option value="">Select Genre</option>
+            @foreach (var genre in genres)
+            {
+                <option value="@genre">@genre</option>
+            }
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="description" class="form-label">Movie Description</label>
+        <textarea class="form-control" id="description" asp-for="Description" name="Description" required></textarea>
+    </div>
+    <div class="mb-3">
+        <label for="releaseYear" class="form-label">Release Date</label>
+        <input type="date" class="form-control" id="releaseYear" asp-for="ReleaseYear" name="ReleaseYear" required>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Add Data</button>
+</form>
